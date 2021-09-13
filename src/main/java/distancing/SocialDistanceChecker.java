@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 
 public class SocialDistanceChecker{
     public static void main(String[] args) throws SocialDistancingViolation {
-        SocialTester buns = new SocialTester("bookings");
-        buns.check();
+        SocialTester socialTester = new SocialTester("bookings");
+        socialTester.check();
     }
 }
 
@@ -26,10 +26,10 @@ class SocialTester {
     boolean check() throws SocialDistancingViolation {
         boolean assertion = false;
         try {
-            if("x x x x x".equals(Files.readAllLines(path).get(0).toLowerCase())){
-                assertion = true;
+            if("x x x x x".equals(Files.readAllLines(path).get(0))) {
                 System.out.println("This is social distancing");
-
+            } else if ("xx x x x x".equals(Files.readAllLines(path).get(0)) || "xx x x x x".equals(Files.readAllLines(path).get(0)) ){
+                System.out.println("This is not social distancing");
             } else {
                 throw new SocialDistancingViolation();
             }
